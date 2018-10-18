@@ -1,0 +1,28 @@
+{
+    "name": "krak/symfony-util",
+    "description": "Symfony Utilities for various components",
+    "type": "library",
+    "homepage": "https://github.com/krakphp/symfony-dependency-injection-util",
+    "keywords": [
+        "symfony",
+        "symfony4",
+        "utilities"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "RJ Garcia",
+            "email": "rj@bighead.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Krak\\SymfonyUtil\\": "src"
+        },
+        "files": ["src/DependencyInjection/util.php"]
+    },
+    "require-dev": {
+        "symfony/dependency-injection": "^4.0",
+        "symfony/kernel": "^4.0"
+    }
+}
