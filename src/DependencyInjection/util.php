@@ -39,6 +39,14 @@ function registerTaggedServiceLocator(ContainerBuilder $container, string $servi
         ));
 }
 
+function registerAvailableTaggedAliases(ContainerBuilder $container, string $serviceId, string $tagName, ?string $keyAttribute = 'alias', $argumentKey = 1) {
+    $aliases = \array_map(function(array $tags) use ($keyAttribute) {
+        return pickLastAttributeFromTags($keyAttribute, $tags);
+    }, $container->findTaggedServiceIds($tagName));
+    $container->findDefinition($serviceId)
+        ->setArgument($argumentKey, \array_unique($aliases));
+}
+
 /** @return Reference[] */
 function createServiceReferenceMapFromTaggedIds(array $taggedIds, ?string $keyAttribute = null): array {
     $refMap = [];
